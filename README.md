@@ -42,6 +42,7 @@ $factory = new \Database\Connectors\ConnectionFactory();
 $connection = $factory->make(array(
     'driver'    => 'mysql',
     'host'      => 'localhost',
+    'database'  => 'database',
     'username'  => 'root',
     'password'  => 'password',
     'charset'   => 'utf8',
@@ -56,6 +57,8 @@ $connection = $factory->make(array(
         PDO::ATTR_EMULATE_PREPARES      => true,
     )
 ));
+
+> If you're working with multiple databases/schemas, you can omit the `database`-attribute and add it to your table calls instead, like: `->table('databaseName.tableName')`
 
 $connection->query("SELECT id, username FROM customers");
 ```
@@ -133,7 +136,7 @@ $connection = $factory->make(array(
 ));
 ```
 
-###Default Connection Options
+### Default Connection Options
 By default the following PDO attributes will be set on connection. You can override these or add to them in the
 `options` array parameter in the connection config.
 
