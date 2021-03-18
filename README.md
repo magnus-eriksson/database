@@ -41,16 +41,16 @@ $connection = $factory->make(array(
     'database'  => 'database',
     'username'  => 'root',
     'password'  => 'password',
-    'charset'   => 'utf8',
-    'collation' => 'utf8_unicode_ci',
+    'charset'   => 'utf8mb4',
+    'collation' => 'utf8mb4_unicode_ci',
 
     // Don't connect until we execute our first query
     'lazy'      => true,
 
     // Set PDO attributes after connection
     'options' => array(
-        PDO::MYSQL_ATTR_LOCAL_INFILE    => true,
-        PDO::ATTR_EMULATE_PREPARES      => true,
+        PDO::ATTR_ERRMODE          => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_EMULATE_PREPARES => false,
     )
 ));
 
